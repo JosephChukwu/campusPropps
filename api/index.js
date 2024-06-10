@@ -25,8 +25,13 @@ mongoose.connect(process.env.MONGO_URL)
         console.error('Error connecting to MongoDB:', err);
     });
 
-    //path 
-    const _dirname = path.resolve();
+  // Static file serving
+app.use(express.static(path.join(__dirname, 'client/dist')));
+
+// Catch-all handler for SPA routing
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client/dist', 'index.html'));
+});
 
     //routes and middleware
     app.use(cors())
@@ -38,11 +43,13 @@ mongoose.connect(process.env.MONGO_URL)
     // app.use(verifyToken)
     // app.use(isAgent)
 
-//via inking of bothe ends
-    app.use(express.static(path.join(_dirname, '/client/dist')));
-    app.get('*', (req, res) => {
-        res.sendFile(path.join(_dirname, 'client', 'dist', 'index.html'));
-    })
+// //via inking of bothe ends
+//     app.use(express.static(path.join(_dirname, '/client/dist')));
+//     app.get('*', (req, res) => {
+//         // res.sendFile(path.join(_dirname, 'client', 'dist', 'index.html'));
+//         res.sendFile(path.join(__dirname, 'client/dist', 'index.html'));
+
+//     })
 
 
     app.use((err, req, res, next) => {
