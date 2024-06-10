@@ -18,6 +18,7 @@
     "@mui/icons-material": "^5.15.14",
     "@mui/material": "^5.15.14",
     "@reduxjs/toolkit": "^2.2.3",
+    "campuspropsx": "file:..",
     "firebase": "^10.11.0",
     "formik": "^2.4.5",
     "react": "^18.2.0",
