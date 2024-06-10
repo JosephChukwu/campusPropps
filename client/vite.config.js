@@ -11,6 +11,6 @@ export default defineConfig({
     }
   },},
 
-  base: "/CamppusPropsx/",
+  base: "/CampusPropsx/",
   plugins: [react()],
 })
