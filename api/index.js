@@ -25,19 +25,22 @@ mongoose.connect(process.env.MONGO_URL)
         console.error('Error connecting to MongoDB:', err);
     });
 
+    // const __dirname = path.resolve();
+
 
 
     //routes and middleware
     app.use(cors())
     app.use(express.json())
     app.use(cookieParser())
-    app.use(express.urlencoded({extended: true}))
+
+
+
+
+    // app.use(express.urlencoded({extended: true}))
     app.use('/api/auth', authRoute)
     app.use('/api/user', userRouter)
     app.use('/api/lodge', lodgeRoute)
-
-    // app.use(verifyToken)
-    // app.use(isAgent)
 
   // Static file serving
   app.use(express.static(path.join(__dirname, '../client/dist')));
@@ -48,13 +51,12 @@ mongoose.connect(process.env.MONGO_URL)
   });
 
 
-// //via inking of bothe ends
-//     app.use(express.static(path.join(_dirname, '/client/dist')));
-//     app.get('*', (req, res) => {
-//         // res.sendFile(path.join(_dirname, 'client', 'dist', 'index.html'));
-//         res.sendFile(path.join(__dirname, 'client/dist', 'index.html'));
+//   app.use(express.static(path.join(__dirname, '/client/dist')));
 
-//     })
+// app.get('*', (req, res) => {
+//   res.sendFile(path.join(__dirname, 'client', 'dist', 'index.html'));
+// })
+
 
 
     app.use((err, req, res, next) => {
@@ -67,8 +69,8 @@ mongoose.connect(process.env.MONGO_URL)
          })
     })
 
+    //starting server
+    const PORT = process.env.PORT || 5000
+    app.listen(PORT, () => console.log(`Server is started && listening on ${PORT}`))
 
-//starting server
-const PORT = process.env.PORT || 5000
-app.listen(PORT, () => console.log(`Server is started && listening on ${PORT}`))
 
