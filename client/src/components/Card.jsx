@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from "react";
 import { Box, Grid, Typography } from "@mui/material";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -33,7 +32,16 @@ const Card = ({ lodgeId, lodge, currentUser }) => {
     //     // overflow: "hidden", // Ensure content doesn't overflow
     //   }}
     >
-      <Box overflow={""} sx={{ height: "60vh", width: "100%",marginBottom :"5vh",display:"flex", flexDirection:"column" }}>
+      <Box
+        overflow={""}
+        sx={{
+          height: "60vh",
+          width: "100%",
+          marginBottom: "5vh",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
         {/* Topmost part of the card */}
         <Grid sx={{ display: "flex", alignItems: "center" }}>
           <img
@@ -52,7 +60,12 @@ const Card = ({ lodgeId, lodge, currentUser }) => {
         </Grid>
 
         {/* Image slider */}
-        <Grid sx={{ width: { md: "30vw", sm: "100%", xs: "100vw" }, position: "relative" }}>
+        <Grid
+          sx={{
+            width: { md: "30vw", sm: "100%", xs: "100vw" },
+            position: "relative",
+          }}
+        >
           <Swiper
             modules={[Navigation, Pagination, Scrollbar, A11y]}
             spaceBetween={1}
@@ -97,22 +110,25 @@ const Card = ({ lodgeId, lodge, currentUser }) => {
             {lodge.leaseTerms}
           </Typography>
 
-          <div style={{
-            position: "absolute",
-            top: "5px",
-            right: "10px",
-            zIndex: 5,
-            border: "0px black",
-            borderRadius: "50px",
-            backgroundColor: "rgba(0, 0, 0, 0.5)",
-          }}>
-          <FavoriteButton
-            isFavorite={isFavorite}
-            setIsFavorite={setIsFavorite}
-            lodgeId={lodgeId}
-            currentUser={currentUser}
-            
-          />
+          <div
+            style={{
+              position: "absolute",
+              top: "5px",
+              right: "10px",
+              zIndex: 5,
+              border: "0px black",
+              borderRadius: "50px",
+              // height: "20px",
+              // width: "20px",
+              backgroundColor: "rgba(0, 0, 0, 0.5)",
+            }}
+          >
+            <FavoriteButton
+              isFavorite={isFavorite}
+              setIsFavorite={setIsFavorite}
+              lodgeId={lodgeId}
+              currentUser={currentUser}
+            />
           </div>
 
           <Typography
@@ -161,48 +177,99 @@ const Card = ({ lodgeId, lodge, currentUser }) => {
 
         {/* titlwe and rent them*/}
         <Link
-                        to={`/LodgePage/${lodge._id}`} style={{textDecoration: "none", color: 'white'}}>
-        <Grid sx={{width: { md: "30vw", sm: "100%", xs: "100vw" }}}>
+          to={`/LodgePage/${lodge._id}`}
+          style={{ textDecoration: "none", color: "white" }}
+        >
+          <Grid sx={{ width: { md: "30vw", sm: "100%", xs: "100vw" } }}>
             <Typography variant="h6">{lodge.title}</Typography>
-            <Grid sx={{display :"flex", justifyContent: "space-between",alignItems: "center"}}>
-            <Box>
-            <Typography variant="body1">{lodge.rent}</Typography>
-            <hr
-              style={{
-                width: `${lodge.rent.toString().length * 8}px`,
-                borderColor: theme.palette.primary.main,
+            <Grid
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                alignItems: "center",
               }}
-            />
-            <Typography
-              variant="subtitle1"
-              gutterBottom
-              color={theme.palette.primary.main}
             >
-              Yearly Rent
-            </Typography>
-          </Box>
-          <Box>
-          <Typography variant="body1">{lodge.agentFee}</Typography>
-          <hr
-            style={{
-              width: `${lodge.agentFee.toString().length * 8}px`,
-              borderColor: theme.palette.primary.main,
-            }}
-          />
-          <Typography
-            variant="subtitle1"
-            gutterBottom
-            color={theme.palette.primary.main}
-          >
-            Charge
-          </Typography>
-        </Box>
+              <Box>
+                <Typography variant="body1">{lodge.rent}</Typography>
+                <hr
+                  style={{
+                    width: `${lodge.rent.toString().length * 8}px`,
+                    borderColor: theme.palette.primary.main,
+                  }}
+                />
+                <Typography
+                  variant="subtitle1"
+                  gutterBottom
+                  color={theme.palette.primary.main}
+                >
+                  Yearly Rent
+                </Typography>
+              </Box>
+              <Box>
+                <Typography variant="body1">{lodge.agentFee}</Typography>
+                <hr
+                  style={{
+                    width: `${lodge.agentFee.toString().length * 8}px`,
+                    borderColor: theme.palette.primary.main,
+                  }}
+                />
+                <Typography
+                  variant="subtitle1"
+                  gutterBottom
+                  color={theme.palette.primary.main}
+                >
+                  Charge
+                </Typography>
+              </Box>
             </Grid>
-        </Grid>
+          </Grid>
         </Link>
       </Box>
-      </main>  
-    );
+    </main>
+  );
 };
 
 export default Card;
+
+
+
+
+
+
+// /* Rectangle 9 */
+
+// position: absolute;
+// width: 755px;
+// height: 84px;
+// left: 0px;
+// top: 198px;
+
+// background: #FFFFFF;
+// border-radius: 15px;
+
+
+
+// /* Cone-Green-Glossy */
+
+// position: absolute;
+// left: 61.24%;
+// right: -61.24%;
+// top: 0%;
+// bottom: 0%;
+
+// background: url(Cone-Green-Glossy.png);
+// transform: rotate(34.72deg);
+
+
+
+// /* Rectangle 7 */
+
+// position: absolute;
+// width: 500px;
+// height: 300px;
+// left: 796px;
+// top: 1063px;
+
+// background: #EFEEB4;
+// box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.15);
+// border-radius: 20px;

@@ -1,25 +1,67 @@
-// FavoriteButton.jsx
 import React, { useState, useEffect } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { IconButton } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import {
   updateUserStart,
   updateUserFailure,
   updateUserSuccess,
 } from "../redux/user/userSlice";
+import { keyframes, styled } from "@mui/system";
+import { IconButton } from "@mui/material";
 
-const FavoriteButton = ({ lodgeId, setIsFavorite, isFavorite, currentUser }) => {
-  // const { currentUser } = useSelector((state) => state.user);
-  // const [isFavorite, setIsFavorite] = useState(false);
+// Define the heartbeat keyframes
+const heartbeat = keyframes`
+  from {
+    transform: scale(1);
+    transform-origin: center center;
+    animation-timing-function: ease-out;
+  }
+  10% {
+    transform: scale(1.2);
+    animation-timing-function: ease-in;
+  }
+  17% {
+    transform: scale(1);
+    animation-timing-function: ease-out;
+  }
+  33% {
+    transform: scale(1.2);
+    animation-timing-function: ease-in;
+  }
+  45% {
+    transform: scale(1);
+    animation-timing-function: ease-out;
+  }
+`;
+
+// Create a styled IconButton with conditional animation
+const AnimatedIconButton = styled(IconButton)(({ isAnimating }) => ({
+  ...(isAnimating && {
+    // animation: `${heartbeat} 1s`,
+    animation: `${heartbeat} 0.7s ease-out`,
+
+  }),
+}));
+
+const FavoriteButton = ({
+  lodgeId,
+  setIsFavorite,
+  isFavorite,
+  currentUser,
+}) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const [isAnimating, setIsAnimating] = useState(false);
 
   const handleToggleFavorite = async () => {
+
     if (!currentUser) {
       return navigate("/sign-in");
     }
+
+    setIsAnimating(true);
+
 
     try {
       dispatch(updateUserStart());
@@ -41,6 +83,8 @@ const FavoriteButton = ({ lodgeId, setIsFavorite, isFavorite, currentUser }) => 
 
       if (data.updatedUser) {
         setIsFavorite((prev) => !prev);
+        // setTimeout(() => setIsAnimating(false), 1000); // Reset animation state after animation duration
+        setTimeout(() => setIsAnimating(false), 2000);
         console.log(data.updatedUser);
         dispatch(updateUserSuccess(data.updatedUser));
       }
@@ -58,12 +102,14 @@ const FavoriteButton = ({ lodgeId, setIsFavorite, isFavorite, currentUser }) => 
   }, [currentUser, lodgeId]);
 
   return (
-    <IconButton
+    <AnimatedIconButton
       onClick={handleToggleFavorite}
+      isAnimating={isAnimating}
     >
       <FavoriteIcon sx={{ color: isFavorite ? "red" : "default" }} />
-    </IconButton>
+    </AnimatedIconButton>
   );
 };
 
 export default FavoriteButton;
+
