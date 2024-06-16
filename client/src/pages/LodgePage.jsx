@@ -92,12 +92,13 @@ function LodgePage() {
       try {
         setLoading(true);
 
-        const fav = await currentUser.favorites;
-        if (fav.includes(params.lodgeId)) {
-          console.log(currentUser.favorites);
-          setIsFavorite(true);
 
-          ///here
+        if (currentUser) {
+          const fav = await currentUser.favorites;
+          if (fav.includes(params.lodgeId)) {
+            console.log(currentUser.favorites);
+            setIsFavorite(true);
+        }
         } else {
           setIsFavorite(false);
         }
