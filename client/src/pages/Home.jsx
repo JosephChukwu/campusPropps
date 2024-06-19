@@ -6,6 +6,7 @@ import FullScreenLoader from "../components/FullScreenLoader";
 import Card from "../components/Card";
 // import CustomCard from "../components/Card";
 import { useTheme } from "@mui/material/styles";
+import CardSkeleton from "../components/CardSkeleton";
 
 
 
@@ -67,7 +68,6 @@ export default function Home() {
         All available lodges
       </Typography>
 
-      {loading && <FullScreenLoader loading={loading} />}
 
       {error && (
         <Typography color="red">
@@ -84,6 +84,10 @@ export default function Home() {
 // height: "100%"
 }}>
 
+{loading &&         <CardSkeleton cards={10}/>      }
+
+
+
       {memoizedLodges &&
       !loading &&
       !error &&
@@ -91,6 +95,7 @@ export default function Home() {
           // <Grid spacing={2} container sx={{display: "flex", justifyContent: "space-between", my: "90px", flexWrap: "wrap", flexDirection: "row"}}>
           <Grid item xs={12} sm={6} md={5.5} key={lodge._id} sx={{  marginBottom: {md: "0", xs: "23vh"}
         }}>
+
             <Card
               lodge={lodge}
               lodgeId={lodge._id}
