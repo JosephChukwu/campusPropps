@@ -269,6 +269,23 @@ function LodgePage() {
                       my: 2,
                     }}
                   >
+                  <Box>
+                  <Typography variant="body1">{lodge.initial}</Typography>
+                  <hr
+                    style={{
+                      width: `${lodge.initial.toString().length * 8}px`,
+                      borderColor: theme.palette.primary.main,
+                    }}
+                  />
+                  <Typography
+                    variant="subtitle1"
+                    gutterBottom
+                    color={theme.palette.primary.main}
+                  >
+                    Initial
+                  </Typography>
+                </Box>
+
                     <Box>
                       <Typography variant="body1">{lodge.rent}</Typography>
                       <hr
@@ -282,25 +299,12 @@ function LodgePage() {
                         gutterBottom
                         color={theme.palette.primary.main}
                       >
-                        Yearly Rent
+                        Rent
                       </Typography>
                     </Box>
-                    <Box>
-                      <Typography variant="body1">{lodge.agentFee}</Typography>
-                      <hr
-                        style={{
-                          width: `${lodge.agentFee.toString().length * 8}px`,
-                          borderColor: theme.palette.primary.main,
-                        }}
-                      />
-                      <Typography
-                        variant="subtitle1"
-                        gutterBottom
-                        color={theme.palette.primary.main}
-                      >
-                        Charge
-                      </Typography>
-                    </Box>
+
+                   
+
                   </Grid>
 
                   <Grid

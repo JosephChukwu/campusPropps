@@ -66,7 +66,7 @@ const LodgeSchema = new mongoose.Schema({
     //     ref: "User.phone",
     //     // required: true
     // },
-    agentFee: {
+    initial: {
         type: String,
         required: true
     },

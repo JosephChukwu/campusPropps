@@ -25,7 +25,7 @@ function PostLodge() {
     type: "",
     vacancy: "",
     rent: "",
-    agentFee: "",
+    initial: "",
     description: "",
     location: "",
     lodgeImages: [],
@@ -160,7 +160,7 @@ function PostLodge() {
         location: string().required("please select lodge location"),
         vacancy: string().required("please select vacancy option"),
         rent: string().required("rent is required").max(20, "rent is too long"),
-        agentFee: string().required("Agent fee is required"),
+        initial: string().required("Agent fee is required"),
         description: string()
           .required("lodge description is required")
           .min(20, "description is too short")
@@ -359,16 +359,16 @@ function PostLodge() {
 
                   <Grid item xs={12}>
                     <Field
-                      name="agentFee"
+                      name="initial"
                       type="string"
                       as={TextField}
                       variant="outlined"
-                      label="Agent and other fees"
+                      label="Tot. initial amount"
                       fullWidth
                       error={
-                        Boolean(errors.agentFee) && Boolean(touched.agentFee)
+                        Boolean(errors.initial) && Boolean(touched.initial)
                       }
-                      helperText={Boolean(touched.agentFee) && errors.agentFee}
+                      helperText={Boolean(touched.initial) && errors.initial}
                     />
                   </Grid>
 
