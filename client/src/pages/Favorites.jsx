@@ -4,8 +4,10 @@ import { useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import FullScreenLoader from "../components/FullScreenLoader";
 import Card from "../components/Card";
-// import CustomCard from "../components/Card";
 import { useTheme } from "@mui/material/styles";
+import CardSkeleton from "../components/CardSkeleton";
+
+
 
 export default function Favorites() {
   const { currentUser } = useSelector((state) => state.user);
@@ -73,7 +75,6 @@ export default function Favorites() {
         Favorite lodges
       </Typography>
 
-      {loading && <FullScreenLoader loading={loading} />}
 
       {error && (
         <Typography color="red">
@@ -86,6 +87,10 @@ export default function Favorites() {
         maxWidth: "100%",
         marginBottom: { xs: "0", md: "20vh" }
       }}>
+
+      {loading &&         <CardSkeleton cards={10}/>      }
+
+
         {lodges && !loading && !error && lodges.map((lodge) => (
           <Grid item xs={12} sm={6} md={5.5} key={lodge._id} sx={{ marginBottom: { md: "0", xs: "23vh" } }}>
             <Card
