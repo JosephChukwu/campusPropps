@@ -41,7 +41,7 @@ const Header = () => {
           <Grid container  sx={{ display: {xs: "flex", sm: "flex", md: "none"}, justifyContent: "space-between", alignItems: "center", width: "100%"}}>
           
           <Link to="/" style={{ textDecoration: "none", color: "#46c4bd" }}>
-          <Typography variant='h4' >CampusProps</Typography>
+          <Typography variant='h4' >Lodgify</Typography>
           </Link>
 
             <IconButton
@@ -81,7 +81,7 @@ const Header = () => {
         <Grid container alignItems="center" sx={{display: {xs: "none", sm: "none", md: "flex"}}}>
 
             <Grid item xs={2} sx={{ color: "#46c4bd", textAlign: "center", textDecorationLine: "none" }} component={Link} to="/">
-              <Typography variant='h3'>CampusProps</Typography>
+              <Typography variant='h3'>Lodgify</Typography>
             </Grid>
 
             <Grid item xs={5} sx={{ marginLeft: 'auto', color: "#46c4bd" }}>
