@@ -165,9 +165,7 @@ function PostLodge() {
           .required("lodge description is required")
           .min(20, "description is too short")
           .max(100, "description is too long"),
-        lodgeImages: array()
-          .min(1, "At least one image is required")
-          .nullable(),
+          lodgeImages: array().nullable(),
       })}
 
       // onSubmit={(values) => {
@@ -441,7 +439,7 @@ function PostLodge() {
                   </Box>
 
                   <Box sx={{ display: "flex", flexDirection: "column" }}>
-                    {values.lodgeImages.length > 0 &&
+                    {values.lodgeImages && values.lodgeImages.length > 0 &&
                       values.lodgeImages.map((url, index) => (
                         <Grid
                           key={url}

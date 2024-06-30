@@ -38,7 +38,7 @@ const LodgeSchema = new mongoose.Schema({
     },
     lodgeImages: {
         type: Array,
-        required: true
+        default: ["https://via.placeholder.com/150?text=No+Image+Contact+Agent"]
     },
     rent: {
         type: String,

@@ -24,7 +24,7 @@ export default function Home() {
     const fetchLodge = async () => {
       try {
         setLoading(true);
-        const res = await fetch(`/api/lodge/allLodges/`);
+        const res = await fetch(`/api/lodge/allLodges`);
         const data = await res.json();
         if (data.success === false) {
           setLoading(false);
