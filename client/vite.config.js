@@ -10,6 +10,7 @@ export default defineConfig({
         secure: false,
       }  
 //51.20.198.242
+//51.21.98.219
     },
   },
   plugins: [react()],
